@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mauiPopup:BasePopupPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mauiPopup="clr-namespace:MauiPopup.Views;assembly=MauiPopup"
+             x:Class="Pololetni_projekt.PopupPage"
+             IsCloseOnBackgroundClick="False"
+             Title="PopupPage">
+    
+    <VerticalStackLayout>
+        <Label 
+            Text="Calibration"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            Margin="10"/>
+        <Image Source="calibrate2.png" />
+        <Button Text="Done!" WidthRequest="100" Margin="10" Clicked="Button_Clicked"></Button>
+
+    </VerticalStackLayout>
+    
+</mauiPopup:BasePopupPage>

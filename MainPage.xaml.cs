@@ -1,14 +1,20 @@
 ﻿using System.Diagnostics;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Xaml;
 
 
 namespace Pololetni_projekt;
 
+
+[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class MainPage : ContentPage
 {
 	public MainPage()
 	{
 		InitializeComponent();
-	}
+        MauiPopup.PopupAction.DisplayPopup(new PopupPage());
+        
+    }
 
     private void ToggleCompass(object sender, EventArgs e)
     {
@@ -100,10 +106,12 @@ public partial class MainPage : ContentPage
     private void Calibrate(object sender, EventArgs e)
     {
         //var snackbar = Snackbar.Make()
-        DisplayAlert("Calibration", "Tilt and move you phone like this:", "Cancel");
-         
+        //DisplayAlert("Calibration", "Tilt and move you phone like this:", "Cancel");
+            
+        MauiPopup.PopupAction.DisplayPopup(new PopupPage());
+
+
     }
-
-
 }
+
 
