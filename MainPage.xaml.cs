@@ -1,4 +1,7 @@
-﻿namespace Pololetni_projekt;
+﻿using System.Diagnostics;
+
+
+namespace Pololetni_projekt;
 
 public partial class MainPage : ContentPage
 {
@@ -16,24 +19,26 @@ public partial class MainPage : ContentPage
                 // Turn on compass
                 Compass.Default.ReadingChanged += Compass_ReadingChanged;
                 Compass.Default.Start(SensorSpeed.UI);
+                compassBtn.Text = "Turn OFF";
+                compassBtn.BackgroundColor = Colors.LightCoral;
+
             }
             else
             {
-                //// Turn off compass
-                //Compass.Default.Stop();
-                //Compass.Default.ReadingChanged -= Compass_ReadingChanged;
-                //CompassLabel.Text = "Off";
-                return;
+                // Turn off compass
+                Compass.Default.Stop();
+                Compass.Default.ReadingChanged -= Compass_ReadingChanged;
+                Direction.Text = "Turn on compass to see direction";
+                border.Background = Colors.White;
+                CompassLabel.Text = "Off";
+                compassBtn.Text = "Turn ON";
+                compassBtn.BackgroundColor = Colors.LightGreen;
+                //compass.Rotation = 0;
+
             }
         }
-    }
-    private void OffToggleCompass(object sender, EventArgs e)
-    {
-        // Turn off compass
-        Compass.Default.Stop();
-        Compass.Default.ReadingChanged -= Compass_ReadingChanged;
-        CompassLabel.Text = "Off";
-        Direction.Text = "Turn on compass to see direction";
+        else
+            Direction.Text = "Your device does not have default compass";
     }
 
     private void Compass_ReadingChanged(object sender, CompassChangedEventArgs e)
@@ -41,31 +46,64 @@ public partial class MainPage : ContentPage
         // Update UI Label with compass state
         //CompassLabel.Text = Math.Round($"Compass: {e.Reading}");
 
-        decimal roundedReading = decimal.Round((decimal)e.Reading.HeadingMagneticNorth, 1); // Zaokrouhlení na dvě desetinná místa
+        decimal roundedReading = decimal.Round((decimal)e.Reading.HeadingMagneticNorth, 0); // Zaokrouhlení na dvě desetinná místa
 
         CompassLabel.Text = Convert.ToString( roundedReading)+"°";
+        compass.BindingContext = -roundedReading; 
 
         // Direction conditions
         
-        if(roundedReading > 315 || roundedReading <= 45 )
+        if(roundedReading > 337 || roundedReading <= 22 )
         {
-            Direction.Text = "Heading to North";
+            Direction.Text = "North";
+            border.Background= Color.FromArgb("#61d6fa");
         }
-        if (roundedReading > 45 && roundedReading <= 135)
+        if (roundedReading > 22 && roundedReading <= 67)
         {
-            Direction.Text = "Heading to East";
+            Direction.Text = "North-East";
+            border.Background = Color.FromArgb("8cf5e2");
         }
-        if(roundedReading > 135 && roundedReading <= 225)
+        if (roundedReading > 67 && roundedReading <= 112)
         {
-            Direction.Text = "Heading to South";
+            Direction.Text = "East";
+            border.Background = Color.FromRgba("73de77");
         }
-        if(roundedReading > 225 && roundedReading <= 315 )
+        if(roundedReading > 112 && roundedReading <= 157)
         {
-            Direction.Text = "Heading to West";
+            Direction.Text = "South-East";
+            border.Background = Color.FromRgba("d7fa6e");
         }
-        
+        if(roundedReading > 157 && roundedReading <= 202 )
+        {
+            Direction.Text = "South";
+            border.Background = Color.FromRgba("fff769");
+        }
+        if (roundedReading > 202 && roundedReading <= 247)
+        {
+            Direction.Text = "South-West";
+            border.Background = Color.FromArgb("#ffb587");
+        }
+        if (roundedReading > 247 && roundedReading <= 292)
+        {
+            Direction.Text = "West";
+            border.Background = Color.FromArgb("#fc9090");
+        }
+        if (roundedReading > 292 && roundedReading <= 337)
+        {
+            Direction.Text = "North-West";
+            border.Background = Color.FromArgb("#ffb3fb");
+        }
+
 
     }
+
+    private void Calibrate(object sender, EventArgs e)
+    {
+        //var snackbar = Snackbar.Make()
+        DisplayAlert("Calibration", "Tilt and move you phone like this:", "Cancel");
+         
+    }
+
 
 }
 

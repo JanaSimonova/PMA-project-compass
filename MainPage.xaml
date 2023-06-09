@@ -1,32 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="Pololetni_projekt.MainPage"
-             Title="Domovská stránka">
+             Title="" BackgroundColor="white">
 
     <ScrollView>
-        <VerticalStackLayout
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="400"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            
+            <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
-            VerticalOptions="Center">
-            
-            <Label x:Name="CompassLabel" Text="Off" HorizontalOptions="Center"/>
-            <Border Background="Aqua"
+            VerticalOptions="Center"
+            Grid.Row="0" >
+
+                <Button HorizontalOptions="Start" Text="Calibrate" BackgroundColor="#f7e1ad" Clicked="Calibrate" TextColor="Black"></Button>
+
+                <Label x:Name="CompassLabel" Text="Off" HorizontalOptions="Center"/>
+            <!--Background="Aqua"-->
+            <Border x:Name="border" 
                     Padding="16,8"
-                    HorizontalOptions="Center">
+                    HorizontalOptions="Center"
+                    StrokeThickness="0">
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="40,40,40,40" />
                 </Border.StrokeShape>
                 <Label x:Name="Direction" Text="Turn on compass to see direction" HorizontalOptions="Center" FontSize="Large" />
             </Border>
 
-            <HorizontalStackLayout>
-                
-                <Button Text="TurnOn Kompas" BackgroundColor="LightGreen" Clicked="ToggleCompass" WidthRequest="160"/>
-                <Button Text="TurnOff Kompas" BackgroundColor="LightCoral" Clicked="OffToggleCompass" WidthRequest="160"/>
-            </HorizontalStackLayout>
+            <Button x:Name="compassBtn" Text="Turn ON" BackgroundColor="LightGreen" TextColor="Black" Clicked="ToggleCompass" WidthRequest="170"/>
+          
+            </VerticalStackLayout>
 
-        </VerticalStackLayout>
+            <VerticalStackLayout Grid.Row="2" BackgroundColor="white">
+                <Image x:Name="compass"
+                    Source="compass.png"
+                    Grid.Row="1" 
+                    Rotation="{Binding}" />
+            </VerticalStackLayout>
+            
+
+            
+        </Grid>
+        
+        
     </ScrollView>
 
 </ContentPage>
