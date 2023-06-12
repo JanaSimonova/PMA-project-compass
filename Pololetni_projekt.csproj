@@ -49,6 +49,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="NováSložka2\**" />
+	  <AndroidResource Remove="NováSložka\**" />
+	  <Compile Remove="NováSložka2\**" />
+	  <Compile Remove="NováSložka\**" />
+	  <EmbeddedResource Remove="NováSložka2\**" />
+	  <EmbeddedResource Remove="NováSložka\**" />
+	  <MauiCss Remove="NováSložka2\**" />
+	  <MauiCss Remove="NováSložka\**" />
+	  <MauiXaml Remove="NováSložka2\**" />
+	  <MauiXaml Remove="NováSložka\**" />
+	  <None Remove="NováSložka2\**" />
+	  <None Remove="NováSložka\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <None Remove="Resources\Images\calibrate2.png" />
 	  <None Remove="Resources\Images\compass.png" />
 	</ItemGroup>
@@ -62,6 +77,10 @@
 	  <MauiXaml Update="PopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Models\" />
 	</ItemGroup>
 
 </Project>

@@ -30,14 +30,12 @@
                 <Border.StrokeShape>
                     <RoundRectangle CornerRadius="40,40,40,40" />
                 </Border.StrokeShape>
-                <Label x:Name="Direction" Text="Turn on compass to see direction" HorizontalOptions="Center" FontSize="Large" />
+                <Label x:Name="Direction" Text="" HorizontalOptions="Center" FontSize="Large" />
             </Border>
 
-            <Button x:Name="compassBtn" Text="Turn ON" BackgroundColor="LightGreen" TextColor="Black" Clicked="ToggleCompass" WidthRequest="170"/>
-          
             </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Row="2"  BackgroundColor="Olive">
+            <VerticalStackLayout Grid.Row="2">
                 <Image x:Name="compass"
                     Source="compass.png"
                     Grid.Row="1" 

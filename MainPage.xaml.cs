@@ -13,10 +13,12 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
         MauiPopup.PopupAction.DisplayPopup(new PopupPage());
-        
+
+        ToggleCompass();
+
     }
 
-    private void ToggleCompass(object sender, EventArgs e)
+    private void ToggleCompass()
     {
         if (Compass.Default.IsSupported)
         {
@@ -25,8 +27,6 @@ public partial class MainPage : ContentPage
                 // Turn on compass
                 Compass.Default.ReadingChanged += Compass_ReadingChanged;
                 Compass.Default.Start(SensorSpeed.UI);
-                compassBtn.Text = "Turn OFF";
-                compassBtn.BackgroundColor = Colors.LightCoral;
 
             }
             else
@@ -37,8 +37,6 @@ public partial class MainPage : ContentPage
                 Direction.Text = "Turn on compass to see direction";
                 border.Background = Colors.White;
                 CompassLabel.Text = "Off";
-                compassBtn.Text = "Turn ON";
-                compassBtn.BackgroundColor = Colors.LightGreen;
                 //compass.Rotation = 0;
 
             }

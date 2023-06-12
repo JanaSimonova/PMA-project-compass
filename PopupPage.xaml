@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mauiPopup="clr-namespace:MauiPopup.Views;assembly=MauiPopup"
              x:Class="Pololetni_projekt.PopupPage"
-             IsCloseOnBackgroundClick="False"
+             IsCloseOnBackgroundClick="True"
              Title="PopupPage">
     
     <VerticalStackLayout HeightRequest="500" WidthRequest="350" >
@@ -20,7 +20,7 @@
         <Image Source="calibrate2.png" Margin="30" />
 
         <HorizontalStackLayout HorizontalOptions="Center" >
-            <Button BackgroundColor="#96b6f2" Text="Start calibration" Margin="10" Clicked="Btn_Start" ></Button>
+            <Button  x:Name="btn_start" BackgroundColor="#96b6f2" Text="Start calibration" Margin="10" Clicked="Btn_Start"></Button>
 
         </HorizontalStackLayout>
         
