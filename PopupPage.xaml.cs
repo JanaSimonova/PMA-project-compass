@@ -14,15 +14,21 @@ public partial class PopupPage : BasePopupPage
     {
         base.OnAppearing();
 
+    }
+
+    private async void Btn_Start(object sender, EventArgs e)
+    {
         // Wait for 5 seconds
         await Task.Delay(5000);
 
         // Vibrate for 0.5 seconds
         Vibration.Vibrate(500);
-    }
-
-    private void Button_Clicked(object sender, EventArgs e)
-    {
         MauiPopup.PopupAction.ClosePopup();
     }
+
+    /*
+    private void Btn_Done(object sender, EventArgs e)
+    {
+        
+    }*/
 }

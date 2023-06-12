@@ -6,9 +6,9 @@
              Title="" BackgroundColor="white">
 
     <ScrollView>
-        <Grid>
+        <Grid  >
             <Grid.RowDefinitions>
-                <RowDefinition Height="400"/>
+                <RowDefinition Height="400" />
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             
@@ -16,11 +16,12 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center"
-            Grid.Row="0" >
+            Grid.Row="0"
+            BackgroundColor="Crimson">
 
-                <Button HorizontalOptions="Start" Text="Calibrate" BackgroundColor="#f7e1ad" Clicked="Calibrate" TextColor="Black"></Button>
+            <Button HorizontalOptions="Start" Text="Calibrate" BackgroundColor="#f7e1ad" Clicked="Calibrate" TextColor="Black"></Button>
 
-                <Label x:Name="CompassLabel" Text="Off" HorizontalOptions="Center"/>
+            <Label x:Name="CompassLabel" Text="Off" HorizontalOptions="Center"/>
             <!--Background="Aqua"-->
             <Border x:Name="border" 
                     Padding="16,8"
@@ -36,7 +37,7 @@
           
             </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Row="2" BackgroundColor="white">
+            <VerticalStackLayout Grid.Row="2"  BackgroundColor="Olive">
                 <Image x:Name="compass"
                     Source="compass.png"
                     Grid.Row="1" 
